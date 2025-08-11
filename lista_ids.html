@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Lista de IDs - Ordinis Archives</title>
+<style>
+  /* ======== Reset e base ======== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background: radial-gradient(circle at center, #041e42, #00121a 90%);
+    color: #8affc1;
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    line-height: 1.7;
+    padding: 40px 60px;
+    overflow-x: hidden;
+  }
+
+  /* ======== Títulos ======== */
+  h1 {
+    font-weight: 900;
+    font-size: 3.5em;
+    letter-spacing: 4px;
+    color: #3af5f5;
+    text-shadow:
+      0 0 10px #3af5f5aa,
+      0 0 20px #33dede55;
+    margin-bottom: 30px;
+    user-select: none;
+    animation: subtleFlicker 5s infinite alternate, jitterSmall 8s infinite;
+    text-align: center;
+  }
+  @keyframes subtleFlicker {
+    0% { opacity: 1; }
+    100% { opacity: 0.92; }
+  }
+  @keyframes jitterSmall {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(1px, 0); }
+    50% { transform: translate(0, 1px); }
+    75% { transform: translate(-1px, 0); }
+  }
+
+  /* ======== Lista de IDs ======== */
+  ul.id-list {
+    list-style: none;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  ul.id-list li {
+    margin-bottom: 15px;
+  }
+  a.id-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: #8affc1;
+    font-size: 1.3em;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: rgba(3, 30, 45, 0.8);
+    box-shadow:
+      0 0 10px #0dfaff44,
+      inset 0 0 15px #0dfaff22;
+    user-select: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  }
+  a.id-link:hover {
+    background: rgba(0, 255, 214, 0.3);
+    box-shadow:
+      0 0 20px #00ffd6cc,
+      inset 0 0 25px #00ffd6cc;
+    color: #00ffd6;
+  }
+  img.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: drop-shadow(0 0 3px #00ffd6);
+    background-color: #003340;
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+  a.id-link:hover img.avatar {
+    filter: drop-shadow(0 0 10px #00ffd6);
+    transform: scale(1.1);
+  }
+
+  /* ======== Modal (janela pop-up) ======== */
+  #modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 20, 35, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(4px);
+  }
+  #modal.active {
+    display: flex;
+  }
+  #modal-content {
+    background: #001822;
+    padding: 25px 40px;
+    border-radius: 20px;
+    box-shadow:
+      0 0 30px #00ffd6cc,
+      inset 0 0 20px #00ffd644;
+    text-align: center;
+    max-width: 320px;
+    user-select: none;
+    position: relative;
+    animation: modalFadeIn 0.5s ease forwards;
+  }
+  @keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  #modal img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: drop-shadow(0 0 15px #00ffd6);
+    background-color: #003340;
+    margin-bottom: 20px;
+  }
+  #modal h2 {
+    color: #00ffd6;
+    margin-bottom: 15px;
+    font-family: 'Courier New', monospace;
+  }
+  #modal button.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    color: #00ffd6;
+    cursor: pointer;
+    font-weight: 900;
+    user-select: none;
+    transition: color 0.3s ease;
+  }
+  #modal button.close-btn:hover {
+    color: #66fff6;
+  }
+
+  /* ======== Fundo linhas sutis para vibe digital ======== */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        #0dfaff22,
+        #0dfaff22 1px,
+        transparent 1px,
+        transparent 3px
+      );
+    z-index: 1;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Lista de IDs - Ordinis Archives</h1>
+
+  <ul class="id-list">
+    <li><a href="#" class="id-link" data-id="1" data-name="ID 1"><img class="avatar" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="Avatar">ID 1</a></li>
+    <li><a href="#" class="id-link" data-id="2" data-name="ID 2"><img class="avatar" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="Avatar">ID 2</a></li>
+    <li><a href="#" class="id-link" data-id="3" data-name="ID 3"><img class="avatar" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="Avatar">ID 3</a></li>
+    <li><a href="#" class="id-link" data-id="4" data-name="ID 4"><img class="avatar" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="Avatar">ID 4</a></li>
+    <li><a href="#" class="id-link" data-id="5" data-name="ID 5"><img class="avatar" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="Avatar">ID 5</a></li>
+  </ul>
+
+  <!-- Modal que mostra a imagem e texto -->
+  <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div id="modal-content">
+      <button class="close-btn" aria-label="Fechar modal">&times;</button>
+      <img src="" alt="Avatar do ID" id="modal-avatar" />
+      <h2 id="modal-title"></h2>
+      <p id="modal-message"></p>
+    </div>
+  </div>
+
+<script>
+  const modal = document.getElementById('modal');
+  const modalAvatar = document.getElementById('modal-avatar');
+  const modalTitle = document.getElementById('modal-title');
+  const modalMessage = document.getElementById('modal-message');
+  const closeBtn = modal.querySelector('.close-btn');
+
+  // Mensagem padrão para IDs normais
+  const defaultMessage = "Informações desse ID ainda não foram publicadas pelo Administrador";
+
+  // Mensagem para ID 1 que dá erro
+  const errorMessage = "Página Não Encontrada ou Inexistente!";
+
+  document.querySelectorAll('.id-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+
+      const id = link.getAttribute('data-id');
+      const name = link.getAttribute('data-name');
+      modalTitle.textContent = name;
+      modalAvatar.src = link.querySelector('img.avatar').src;
+
+      if(id === "1") {
+        modalMessage.textContent = errorMessage;
+      } else {
+        modalMessage.textContent = defaultMessage;
+      }
+
+      modal.classList.add('active');
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+
+  // Fechar modal clicando fora do conteúdo
+  modal.addEventListener('click', (e) => {
+    if(e.target === modal) {
+      modal.classList.remove('active');
+    }
+  });
+
+  // Fechar modal com ESC
+  window.addEventListener('keydown', (e) => {
+    if(e.key === "Escape" && modal.classList.contains('active')) {
+      modal.classList.remove('active');
+    }
+  });
+</script>
+
+</body>
+</html>

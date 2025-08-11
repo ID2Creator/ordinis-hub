@@ -1,0 +1,111 @@
+/* Fundo escuro e frio, com leve padrão digital */
+body {
+  background: radial-gradient(circle at center, #041e42, #00121a 90%);
+  color: #8affc1; /* verde azulado suave */
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  line-height: 1.7;
+  padding: 40px 60px;
+  filter: contrast(1.1);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Títulos grandes, com brilho suave e sombra leve */
+h1, h2 {
+  font-weight: 900;
+  font-size: 3.5em;
+  letter-spacing: 4px;
+  color: #3af5f5;
+  text-shadow:
+    0 0 10px #3af5f5aa,
+    0 0 20px #33dede55;
+  margin-bottom: 30px;
+  user-select: none;
+  animation: subtleFlicker 5s infinite alternate;
+}
+
+@keyframes subtleFlicker {
+  0% { opacity: 1; }
+  100% { opacity: 0.92; }
+}
+
+/* Links com cor azul brilhante e brilho ao hover */
+a {
+  color: #33f0ff;
+  text-decoration: underline;
+  text-shadow: 0 0 5px #33f0ffbb;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #00ffd6;
+  text-shadow: 0 0 15px #00ffd6cc;
+}
+
+/* Parágrafos com espaçamento irregular de linhas para dar sensação “estranha” */
+p {
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+  text-align: justify;
+  line-height: 1.5;
+  animation: lineShift 15s infinite alternate;
+  user-select: text;
+}
+
+@keyframes lineShift {
+  0% { letter-spacing: 0.05em; }
+  50% { letter-spacing: 0.07em; }
+  100% { letter-spacing: 0.05em; }
+}
+
+/* Caixa principal com borda neon fraca e sombra sutil */
+#content {
+  background: #021622cc;
+  padding: 30px 40px;
+  border-radius: 15px;
+  border: 2px solid #0dfaff55;
+  box-shadow:
+    0 0 20px #0dfaff44,
+    inset 0 0 15px #0dfaff22;
+  max-width: 900px;
+  margin: auto;
+  user-select: text;
+}
+
+/* Fundo com linhas horizontais quase invisíveis, lembrando tela antiga */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      #0dfaff22,
+      #0dfaff22 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  z-index: 1;
+}
+
+/* Texto forte com brilho leve em azul */
+strong {
+  color: #00ffe3;
+  text-shadow: 0 0 6px #00ffe3aa;
+  font-weight: 900;
+}
+
+/* Leve tremor quase imperceptível nos títulos para causar desconforto */
+h1, h2 {
+  animation: subtleFlicker 5s infinite alternate, jitterSmall 8s infinite;
+}
+
+@keyframes jitterSmall {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(1px, 0); }
+  50% { transform: translate(0, 1px); }
+  75% { transform: translate(-1px, 0); }
+}
