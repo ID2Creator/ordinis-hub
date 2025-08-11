@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Ordinis - Som Ambiente</title>
+<style>
+  body {
+    background: radial-gradient(circle at center, #041e42, #00121a 90%);
+    color: #8affc1;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+  button#audioToggle {
+    background: #003340;
+    border: 2px solid #00ffd6;
+    color: #00ffd6;
+    font-size: 1.5em;
+    padding: 15px 30px;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00ffd6;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  button#audioToggle:hover {
+    background: #00ffd6;
+    color: #003340;
+  }
+</style>
+</head>
+<body>
+
+<h1>Ordinis - Som Ambiente</h1>
+
+<button id="audioToggle">Ligar Som Ambiente</button>
+
+<audio id="backgroundAudio" loop>
+  <source src="audio/ambiente-loop.mp3" type="audio/mpeg" />
+  Seu navegador não suporta áudio.
+</audio>
+
+<script>
+  const audio = document.getElementById('backgroundAudio');
+  const btn = document.getElementById('audioToggle');
+
+  btn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      btn.textContent = "Desligar Som Ambiente";
+    } else {
+      audio.pause();
+      btn.textContent = "Ligar Som Ambiente";
+    }
+  });
+</script>
+
+</body>
+</html>

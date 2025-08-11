@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mapa Ordinis - Dimensão Chapada</title>
+<style>
+  body {
+    font-family: 'VT323', monospace;
+    background-color: #272727;
+    color: #eee;
+    margin: 40px;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+  }
+  #map-container {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    background: #111;
+    border: 3px solid #4a90e2;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 6px;
+    box-shadow: 0 0 15px #4a90e2cc;
+  }
+  .area {
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    transition: filter 0.3s ease;
+  }
+  .area:hover {
+    filter: brightness(1.3);
+  }
+
+  /* Cores por tipo */
+  .vegetacao { background-color: #2ecc40; }  /* verde */
+  .cidade { background-color: #3498db; }     /* azul */
+  .importante { background-color: #f1c40f; } /* amarelo */
+  .perigo { background-color: #e74c3c; }     /* vermelho */
+
+  /* Tooltip simples */
+  .tooltip {
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #222;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 1rem;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: #eee;
+    box-shadow: 0 0 6px #000;
+    z-index: 10;
+  }
+  .area:hover .tooltip {
+    opacity: 1;
+  }
+
+  /* Legenda */
+  #legend {
+    max-width: 200px;
+    font-size: 1.1rem;
+  }
+  #legend h3 {
+    color: #4a90e2;
+    margin-bottom: 12px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .legend-color {
+    width: 25px;
+    height: 25px;
+    border-radius: 4px;
+    margin-right: 12px;
+    box-shadow: 0 0 5px #000;
+  }
+  .vegetacao.legend-color { background-color: #2ecc40; }
+  .cidade.legend-color { background-color: #3498db; }
+  .importante.legend-color { background-color: #f1c40f; }
+  .perigo.legend-color { background-color: #e74c3c; }
+</style>
+</head>
+<body>
+
+  <div id="map-container">
+    <div class="area vegetacao" data-name="Floresta Esmeralda" data-desc="Densa vegetação, local seguro."></div>
+    <div class="area vegetacao" data-name="Campos Verdes" data-desc="Amplos campos com flora abundante."></div>
+    <div class="area cidade" data-name="Cidade Azul" data-desc="Grande centro urbano com população ativa."></div>
+    <div class="area cidade" data-name="Porto Marinho" data-desc="Cidade costeira movimentada."></div>
+    <div class="area importante" data-name="Templo Antigo" data-desc="Local sagrado, cheio de mistérios."></div>
+    <div class="area perigo" data-name="Zona Vermelha" data-desc="Área infestada por bots hostis. Cuidado!"></div>
+
+    <div class="area vegetacao" data-name="Floresta Escura" data-desc="Área densa e pouco explorada."></div>
+    <div class="area vegetacao" data-name="Montanhas Verdes" data-desc="Região montanhosa com fauna diversa."></div>
+    <div class="area cidade" data-name="Vila Pequena" data-desc="Pequena vila com poucos habitantes."></div>
+    <div class="area importante" data-name="Santuário Secreto" data-desc="Lugar oculto de grande poder."></div>
+    <div class="area importante" data-name="Campo de Energia" data-desc="Área com energia estranha e instável."></div>
+    <div class="area perigo" data-name="Território Hostil" data-desc="Zona dominada por inimigos perigosos."></div>
+
+    <div class="area vegetacao" data-name="Pântano Sombrio" data-desc="Terreno difícil, cuidado com armadilhas."></div>
+    <div class="area vegetacao" data-name="Bosque Calmo" data-desc="Local de descanso e paz."></div>
+    <div class="area cidade" data-name="Fortaleza Azul" data-desc="Ponto estratégico militar."></div>
+    <div class="area cidade" data-name="Mercado Central" data-desc="Centro comercial movimentado."></div>
+    <div class="area importante" data-name="Laboratório" data-desc="Local de pesquisas avançadas."></div>
+    <div class="area perigo" data-name="Área de Caçada" data-desc="Inimigos em patrulha constante."></div>
+
+    <div class="area vegetacao" data-name="Planícies Abertas" data-desc="Área tranquila e vasta."></div>
+    <div class="area cidade" data-name="Aldeia da Lua" data-desc="Aldeia com rituais antigos."></div>
+    <div class="area cidade" data-name="Centro Urbano" data-desc="Centro da Dimensão Chapada."></div>
+    <div class="area importante" data-name="Centro de Controle" data-desc="Local para monitorar a dimensão."></div>
+    <div class="area importante" data-name="Base Operacional" data-desc="Base militar secreta."></div>
+    <div class="area perigo" data-name="Zona de Conflito" data-desc="Área com conflitos constantes."></div>
+  </div>
+
+  <aside id="legend">
+    <h3>Legenda do Mapa</h3>
+    <div class="legend-item"><div class="legend-color vegetacao"></div>Vegetação (seguro)</div>
+    <div class="legend-item"><div class="legend-color cidade"></div>Cidade (população)</div>
+    <div class="legend-item"><div class="legend-color importante"></div>Ponto Importante</div>
+    <div class="legend-item"><div class="legend-color perigo"></div>Perigo (bots inimigos)</div>
+  </aside>
+
+<script>
+  // O tooltip já está na própria div area, aparece no hover via CSS
+  // Se quiser, pode futuramente adicionar clique para ação ou mais interatividade
+</script>
+
+</body>
+</html>

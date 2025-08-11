@@ -1,34 +1,189 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Ordinis Archives</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ordinis Archives - Dimensão Chapada</title>
+
+  <!-- Fonte Orbitron -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Reset básico e container principal */
+    body, html {
+      height: 100%;
+      margin: 0;
+      background-color: #272727      ;
+      font-family: 'VT323', monospace;
+      color: #181818;
+      line-height: 1.6;
+    }
+
+    /* Container centralizado */
+    #main-content {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px 30px;
+      background-color: rgb(105, 105, 105);
+      box-shadow: 0 5px 15px rgba(74, 144, 226, 0.1);
+    }
+
+    /* Header */
+    #header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    #header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      color: #18b976;
+      margin-bottom: 8px;
+      user-select: none;
+    }
+
+    #header p {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin-top: 0;
+      user-select: none;
+    }
+
+    #header hr {
+      width: 60px;
+      border: 0;
+      border-top: 3px solid #ffffff;
+      margin: 20px auto 0 auto;
+    }
+
+    /* Menu */
+    #menu ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding-left: 0;
+      margin: 40px 0;
+    }
+
+    #menu ul li a {
+      font-size: 1.3rem;
+      color: #9dffe6;
+      font-family: 'VT323', monospace;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    #menu ul li a:hover {
+      color: #18b976;
+      text-decoration: none;
+    }
+
+    /* Conteúdo principal */
+    #content {
+      color: #333;
+    }
+
+    #content h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      color: #18b976;
+      user-select: none;
+      text-align: center;
+    }
+
+    #content p {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #content strong {
+      color: #2b2b2b;
+      font-weight: 700;
+    }
+
+    /* Caixas retangulares verticais */
+    .box {
+      background-color: rgba(245, 255, 249, 0.795);
+      border: 2px solid #21bb94;
+      border-radius: 8px;
+      padding: 20px 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 10px rgba(74, 144, 226, 0.2);
+      color: #1a1a1a;
+      transition: background-color 0.3s ease;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .box:hover {
+      background-color: rgba(18, 148, 83, 0.63);
+    }
+
+    .box h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #2b2b2b;
+    }
+
+    .box p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 <body>
 
-<div id="header">
-  <h1>Ordinis Archives</h1>
-  <p>Documentando a história digital desde 0x00</p>
-  <hr>
-</div>
+  <div id="main-content">
+    <header id="header">
+      <h1 class="ena-glitch">Ordinis Archives</h1>
+      <p>Documentando a história digital desde 0x00</p>
+      <hr />
+    </header>
 
-<div id="menu">
-  <ul>
-    <li><a href="index.html">Página Inicial</a></li>
-    <li><a href="lista_ids.html">Lista de IDs</a></li>
-    <li><a href="downloads/audio01.wav">Baixar Áudio Misterioso</a></li>
-  </ul>
-</div>
+    <nav id="menu">
+      <ul>
+        <li><a href="index.html">Página Inicial</a></li>
+        <li><a href="lista_ids.html">Lista de IDs</a></li>
+        <li><a href="downloads/audio01.wav">Baixar Áudio Misterioso</a></li>
+      </ul>
+    </nav>
 
-<div id="content">
-  <h2>Bem-vindo ao Arquivo de Ordinis</h2>
-  <p>Esta enciclopédia reúne informações sobre os IDs e eventos do mundo digital de Ordinis.</p>
-  <p><strong>Atenção:</strong> Alguns arquivos podem estar corrompidos...</p>
-</div>
+    <section id="content">
+      <h2 class="ena-glitch">Bem-vindo ao Arquivo de Ordinis</h2>
+
+      <div class="box">
+        <h3>Caixa 1</h3>
+        <p>Texto do conteúdo da primeira caixa, pode ser qualquer coisa.</p>
+      </div>
+
+      <div class="box">
+        <h3>Caixa 2</h3>
+        <p>Mais texto aqui, para mostrar outra caixa vertical.</p>
+      </div>
+
+      <div class="box">
+        <h3>Caixa 3</h3>
+        <p>Caixa número três com texto de exemplo para ver o scroll.</p>
+      </div>
+
+      <div class="box">
+        <h3>Caixa 4</h3>
+        <p>Mais uma caixa para fazer a página crescer e ativar o scroll.</p>
+      </div>
+
+      <div class="box">
+        <h3>Caixa 5</h3>
+        <p>Caixa extra só para garantir que tenha bastante conteúdo para scroll.</p>
+      </div>
 
 </body>
 </html>
-
-
-
