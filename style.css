@@ -1,0 +1,317 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0a0a0a;
+    color: #00ff99;
+    font-family: 'VT323', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Container */
+.menu-container {
+    text-align: center;
+    z-index: 1;
+}
+
+/* Title with glitch */
+.title {
+    font-size: 4rem;
+    letter-spacing: 3px;
+    position: relative;
+    animation: flicker 2s infinite;
+}
+
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+    }
+    20%, 24%, 55% {
+        opacity: 0.3;
+    }
+}
+
+/* Subtitle */
+.subtitle {
+    font-size: 1.4rem;
+    margin: 10px 0;
+}
+
+/* Status color */
+.status {
+    color: #ff5555;
+}
+
+/* Button */
+.connect-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    color: #00ff99;
+    border: 2px solid #00ff99;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+.connect-btn:hover {
+    background: #00ff99;
+    color: #0a0a0a;
+    box-shadow: 0 0 15px #00ff99;
+}
+
+.overlay {
+    position: fixed; /* fica sempre presa à tela */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        rgba(0,255,153,0.05),
+        rgba(0,255,153,0.05) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    animation: noiseMove 2s linear infinite;
+    z-index: 999; /* garante que fique por cima */
+}
+
+
+@keyframes noiseMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
+}
+
+/* Faz a página rolar normalmente */
+body {
+    overflow-y: auto;
+}
+
+
+
+
+/* Conteúdo com scroll */
+.content-section {
+    width: 90%;
+    max-width: 900px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Blocos de lore */
+.lore-box {
+    border: 2px solid #00ff99;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 15px #00ff99;
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+    font-size: 1.3rem; /* Aumenta texto padrão dentro da box */
+    line-height: 1; /* Espaçamento entre linhas */
+}
+
+/* Texto dentro da lore box */
+.lore-box p {
+    font-size: 1.3rem;
+}
+
+
+/* Animação para aparecer suavemente */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Espaço entre seções do guia */
+.guide-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(0, 255, 153, 0.4); /* linha estilo terminal */
+         font-size: 1.3rem;
+}
+
+/* Espaço extra entre listas e parágrafos */
+.guide-section p,
+.guide-section ul,
+.guide-section details {
+    margin-top: 10px;
+}
+
+/* Dar mais respiro nas listas */
+.guide-section li {
+    margin-bottom: 8px;
+     font-size: 1.3rem;
+}
+
+/* Dar leve destaque nos títulos */
+.guide-section h2 {
+    margin-bottom: 8px;
+    color: #00ff99;
+    text-shadow: 0 0 6px #00ff99;
+     font-size: 1.3rem;
+}
+
+/* Ajuste apenas para a página do guia */
+body.guia-page {
+    display: block; /* remove o flex que centraliza tudo */
+    padding-top: 60px; /* espaço no topo */
+    min-height: 100vh;
+    overflow-y: auto; /* garante que role normalmente */
+}
+
+/* Grid container para cards */
+.id-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 30px auto 0;
+}
+
+/* Estilo dos cards */
+.id-card {
+    background: rgba(0, 255, 153, 0.1);
+    border: 2px solid #00ff99;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    color: #00ff99;
+    text-decoration: none;
+    box-shadow: 0 0 8px #00ff99;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Grid container para cards do guia */
+.cards-grid.guia-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+/* Estilo dos cards links do guia */
+.guide-card-link {
+  background: rgba(0, 255, 153, 0.12);
+  border: 2px solid #00ff99;
+  border-radius: 12px;
+  padding: 18px 15px;
+  text-align: center;
+  color: #00ff99;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 0 10px #00ff99;
+  user-select: none;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease,
+    transform 0.15s ease;
+}
+
+.guide-card-link:hover,
+.guide-card-link:focus {
+  background: #00ff99;
+  color: #0a0a0a;
+  box-shadow: 0 0 30px #00ff99;
+  transform: scale(1.05);
+  outline: none;
+}
+
+
+.id-card:hover {
+    background: #00ff99;
+    color: #0a0a0a;
+    box-shadow: 0 0 25px #00ff99;
+    transform: scale(1.05);
+}
+
+.id-card h2 {
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+}
+
+/* Status dentro do card */
+.id-card p {
+    font-size: 1.2rem;
+}
+
+/* Status coloridos pra cada tipo */
+.id-card span {
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 8px;
+}
+
+/* Cores específicas para status */
+.id-card.restrito span {
+    background-color: #ff4444;
+    color: #fff;
+}
+
+.id-card.ativo span {
+    background-color: #22cc55;
+    color: #0a0a0a;
+}
+
+.id-card.inativo span {
+    background-color: #999999;
+    color: #0a0a0a;
+}
+
+.id-card.desconhecido span {
+    background-color: #ffaa00;
+    color: #0a0a0a;
+}
+
+.id-card.localizado span {
+    background-color: #3399ff;
+    color: #fff;
+}
+
+
+.perfil-container {
+    max-width: 700px;
+    margin: 50px auto 70px;
+    padding: 25px 30px;
+    background: rgba(0, 255, 153, 0.1);
+    border: 2px solid #00ff99;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #00ff99;
+    text-align: left;
+}
+
+.perfil-container .info-section p {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.perfil-container .descricao {
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.5;
+    white-space: pre-line; /* mantém quebras de linha */
+}

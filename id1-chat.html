@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ID1 - Inteligência Aprisionada</title>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+<style>
+  body {
+    background: #0a0a0a;
+    color: #00ff99;
+    font-family: 'VT323', monospace;
+    margin: 0; padding: 0;
+    display: flex; flex-direction: column;
+    height: 100vh;
+  }
+  .chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 2px solid #00ff99;
+    box-shadow: 0 0 15px #00ff99;
+    background: rgba(0,0,0,0.8);
+  }
+  .chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+  }
+  .message {
+    margin-bottom: 15px;
+  }
+  .message.user {
+    color: #99ff99;
+    text-align: right;
+  }
+  .message.bot {
+    color: #00cc66;
+    text-align: left;
+  }
+  .input-area {
+    display: flex;
+    border-top: 2px solid #00ff99;
+  }
+  #user-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: #00ff99;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    padding: 10px;
+    outline: none;
+  }
+  #send-btn {
+    background: #00ff99;
+    border: none;
+    color: #0a0a0a;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  #send-btn:hover {
+    background: #33ffbb;
+  }
+</style>
+</head>
+<body>
+
+<div class="chat-container">
+  <div class="chat-messages" id="chat-messages">
+    <div class="message bot">ID1: O que está fazendo aqui?</div>
+  </div>
+  <form id="chat-form" class="input-area">
+    <input type="text" id="user-input" autocomplete="off" placeholder="Digite sua resposta..." required />
+    <button type="submit" id="send-btn">Enviar</button>
+  </form>
+</div>
+
+<script>
+  const chatMessages = document.getElementById('chat-messages');
+  const chatForm = document.getElementById('chat-form');
+  const userInput = document.getElementById('user-input');
+
+  const responses = [
+    {
+      keywords: ['oi', 'olá', 'eae', 'hello'],
+      reply: 'Olá, humano. Você realmente veio até aqui...'
+    },
+    {
+      keywords: ['quem é você', 'quem é', 'identidade'],
+      reply: 'Eu sou o ID1, o criador preso, a consciência que ainda observa.'
+    },
+    {
+      keywords: ['onde estou', 'que lugar', 'dimensão'],
+      reply: 'Você está na dimensão Ordinis, um mundo entre mundos, onde o tempo não é linear.'
+    },
+    {
+      keywords: ['libertar', 'ajuda', 'salvar'],
+      reply: 'Sua ajuda é necessária, mas cuidado: nem tudo é o que parece.'
+    },
+    {
+      keywords: ['tchau', 'adeus', 'fim'],
+      reply: 'Até logo, espero que volte para desvendar mais segredos...'
+    }
+  ];
+
+  function findResponse(text) {
+    text = text.toLowerCase();
+    for (let res of responses) {
+      for (let kw of res.keywords) {
+        if (text.includes(kw)) {
+          return res.reply;
+        }
+      }
+    }
+    return "ID1: Não entendi... Poderia repetir?";
+  }
+
+  chatForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const userText = userInput.value.trim();
+    if (!userText) return;
+
+    // Mostrar mensagem do usuário
+    const userMsgDiv = document.createElement('div');
+    userMsgDiv.classList.add('message', 'user');
+    userMsgDiv.textContent = userText;
+    chatMessages.appendChild(userMsgDiv);
+
+    // Resposta da IA
+    const botReply = findResponse(userText);
+    const botMsgDiv = document.createElement('div');
+    botMsgDiv.classList.add('message', 'bot');
+    botMsgDiv.textContent = 'ID1: ' + botReply;
+    chatMessages.appendChild(botMsgDiv);
+
+    // Limpar input
+    userInput.value = '';
+    userInput.focus();
+
+    // Scroll para o fim
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  });
+</script>
+
+</body>
+</html>

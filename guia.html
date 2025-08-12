@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Guia do Jogador — Ordinis</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+</head>
+<body class="guia-page">
+
+
+  <!-- Navegação superior (consistente com o resto do site) -->
+  <nav class="top-nav">
+    <a href="painel.html" class="nav-link">Menu Principal</a>
+    <a href="guia.html" class="nav-link active">Guia do Jogador</a>
+  </nav>
+
+  <main style="max-width:1100px; margin:30px auto; padding: 0 20px;">
+    <header style="text-align:center; margin-bottom:20px;">
+      <h1 class="title" style="font-size:2.6rem; margin-bottom:6px;">GUIA DO JOGADOR</h1>
+      <p class="subtitle" style="margin-bottom:12px;">Arquivo confidencial — informações essenciais para sobreviver em Ordinis.</p>
+      <a href="painel.html" class="connect-btn" style="display:inline-block; margin-top:6px;">← Voltar ao Painel</a>
+    </header>
+
+    <!-- Índice rápido -->
+   <section class="guide-index" style="margin-bottom:18px; max-width:900px; margin-left:auto; margin-right:auto;">
+  <div class="cards-grid guia-cards">
+    <a href="#personagens" class="guide-card-link">
+      👥 Personagens & Facções
+    </a>
+    <a href="#locais" class="guide-card-link">
+      📍 Locais Importantes
+    </a>
+    <a href="#mecanicas" class="guide-card-link">
+      ⚙ Mecânicas & Objetivos
+    </a>
+    <a href="#ameacas" class="guide-card-link">
+      ⚠ Ameaças Digitais
+    </a>
+    <a href="#dicas" class="guide-card-link">
+      💡 Dicas Rápidas
+    </a>
+  </div>
+</section>
+
+
+    <!-- Seções do guia -->
+    <section id="personagens" class="guide-section">
+      <h2>👥 Personagens & Facções</h2>
+      <p class="muted">Quem você pode encontrar e o que esperar deles.</p>
+
+      <div class="cards-grid">
+        <article class="guide-card">
+          <img src="images/id2_card.png" alt="ID2" class="card-img" onerror="this.style.display='none'">
+          <h3>ID2 — Ativo</h3>
+          <p>Agente hostil com alto índice de interferência. Estratégia: evitar confronto direto; usar distrações.</p>
+          <details>
+            <summary>Mais informações</summary>
+            <p>ID2 tende a patrulhar áreas de alto tráfego e usa sinais para corromper dispositivos. Vulnerável a interferência elétrica.</p>
+          </details>
+        </article>
+
+        <article class="guide-card">
+          <img src="images/ally_card.png" alt="Aliado" class="card-img" onerror="this.style.display='none'">
+          <h3>Aliados Locais</h3>
+          <p>NPCs que fornecem informação ou itens. Nem todos são confiáveis — confirme sempre as intenções.</p>
+          <details>
+            <summary>Onde encontrar</summary>
+            <p>Áreas seguras e hubs centrais; alguns exigem prova de identidade (ID token).</p>
+          </details>
+        </article>
+
+        <!-- Adicione mais cards conforme precisar -->
+      </div>
+    </section>
+
+    <section id="locais" class="guide-section">
+      <h2>📍 Locais Importantes</h2>
+      <p class="muted">Regiões que o jogador deve conhecer.</p>
+
+      <div class="cards-grid">
+        <article class="guide-card">
+          <h3>Laboratório de Lorrens</h3>
+          <p>Zona de pesquisas com equipamento que pode restaurar sinais corrompidos.</p>
+          <details>
+            <summary>Pontos de interesse</summary>
+            <ul>
+              <li>Console central — pode desbloquear atalhos.</li>
+              <li>Subnível — áreas com anomalias pequenas.</li>
+            </ul>
+          </details>
+        </article>
+
+        <article class="guide-card">
+          <h3>Estação Abandonada</h3>
+          <p>Área de alto risco; ótima para loot, mas com patrulhas.</p>
+          <details>
+            <summary>Dica rápida</summary>
+            <p>Use ruído branco para disfarçar sua assinatura por 10–15s.</p>
+          </details>
+        </article>
+      </div>
+    </section>
+
+    <section id="mecanicas" class="guide-section">
+      <h2>⚙ Mecânicas & Objetivos</h2>
+      <p class="muted">O que o jogador precisa saber para jogar melhor.</p>
+
+      <details open>
+        <summary>Objetivo principal</summary>
+        <p>Realize tarefas de restauração de conexão, colete fragmentos de dado e contenha anomalias para atrasar o colapso.</p>
+      </details>
+
+      <details>
+        <summary>Como usar o Esterelator</summary>
+        <p>Equipamento principal para neutralizar distúrbios. Pressione e segure para carregar; libere para disparo. Consome energia.</p>
+      </details>
+
+      <details>
+        <summary>Cooperação</summary>
+        <p>Comunicação com o parceiro é crucial. Quem está no site fornece informações visuais e timestamps (o que você pode usar para sincronizar ações).</p>
+      </details>
+    </section>
+
+    <section id="ameacas" class="guide-section">
+      <h2>⚠ Ameaças Digitais</h2>
+      <p class="muted">Tipos de inimigos e como reconhecê-los.</p>
+
+      <ul class="threat-list">
+        <li><strong>Err Baixo</strong> — pequenas corrupções visuais, inimigos lentos; distraia ou evite.</li>
+        <li><strong>Err Médio</strong> — corrupções temporais, inimigos que perseguem; use cobertura e itens de cura.</li>
+        <li><strong>Err Alto</strong> — rupturas dimensionais, ataques em área; contenção imediata recomendada.</li>
+      </ul>
+    </section>
+
+    <section id="dicas" class="guide-section" style="margin-bottom:80px;">
+      <h2>💡 Dicas Rápidas</h2>
+      <ul>
+        <li>Sincronize um cronômetro com seu parceiro para eventos temporais (ex: 00:15 — alerta de onda).</li>
+        <li>Fique atento a padrões — anomalias sempre deixam um som específico antes de agir.</li>
+        <li>Explore com calma: morte no mundo digital causa perda de fragmentos coletados.</li>
+        <li>Use o chat ID1 para obter pistas opcionais; nem todas as respostas são confiáveis.</li>
+      </ul>
+    </section>
+  </main>
+
+  <div class="overlay"></div>
+    
+</body>
+</html>
+
