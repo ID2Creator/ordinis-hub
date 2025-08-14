@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Erro 203</title>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body style="text-align:center; font-family:sans-serif;">
+  <h1>Erro 203 — Página corrompida</h1>
+  <p>Escaneie o código abaixo para restaurar o acesso.</p>
+  <div id="qrcode"></div>
+
+  <script>
+    // Configuração Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDqEPw2B_TUtngEcvfPoJMkXbJ2AydJFy4",
+      authDomain: "ordinis-secret.firebaseapp.com",
+      databaseURL: "https://ordinis-secret-default-rtdb.firebaseio.com",
+      projectId: "ordinis-secret",
+      storageBucket: "ordinis-secret.firebasestorage.app",
+      messagingSenderId: "251949306183",
+      appId: "1:251949306183:web:c9c89244484849f7983c62",
+      measurementId: "G-1NYXRRQG7J"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    // ID único para esta sessão
+    const sessionId = Math.random().toString(36).substring(2, 10);
+
+    // Cria QR code com link para o celular
+    const linkCelular = `https://SEU-SITE.github.io/desbloqueio.html?id=${sessionId}`;
+    new QRCode(document.getElementById("qrcode"), linkCelular);
+
+    // Observa no banco se foi desbloqueado
+    db.ref("sessions/" + sessionId).on("value", snap => {
+      if (snap.val() && snap.val().unlocked) {
+        window.location.href = "pagina-secreta.html";
+      }
+    });
+  </script>
+</body>
+</html>

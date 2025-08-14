@@ -112,10 +112,6 @@
         <p>Realize tarefas de restauração de conexão, colete fragmentos de dado e contenha anomalias para atrasar o colapso.</p>
       </details>
 
-      <details>
-        <summary>Como usar o Esterelator</summary>
-        <p>Equipamento principal para neutralizar distúrbios. Pressione e segure para carregar; libere para disparo. Consome energia.</p>
-      </details>
 
       <details>
         <summary>Cooperação</summary>
@@ -146,7 +142,86 @@
   </main>
 
   <div class="overlay"></div>
-    
+
+  <!-- Texto aparentemente normal -->
+<p id="texto-secreto" style="display:inline; cursor:pointer; color:inherit;">
+  Há mais do que os olhos podem ver...
+</p>
+
+<script>
+  const textoSecreto = document.getElementById("texto-secreto");
+
+  textoSecreto.addEventListener("mouseenter", () => {
+    textoSecreto.style.color = "#9b59b6"; // roxo misterioso
+    textoSecreto.style.textDecoration = "underline";
+  });
+
+  textoSecreto.addEventListener("mouseleave", () => {
+    textoSecreto.style.color = "inherit";
+    textoSecreto.style.textDecoration = "none";
+  });
+
+  textoSecreto.addEventListener("click", () => {
+    window.location.href = "erro203.html";
+  });
+</script>
 </body>
 </html>
+
+    
+
+  <audio id="secreto-audio" loop>
+  <source src="audio/secreto_bg.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio.
+</audio>
+
+<script>
+  const secretoAudio = document.getElementById('secreto-audio');
+  let secretoAtivo = false;
+
+  // Detecta se a tecla Shift está sendo segurada
+  document.addEventListener('keydown', (e) => {
+      if(e.key === 'Shift' && !secretoAtivo){
+          secretoAtivo = true;
+          document.body.classList.add('modo-secreto');
+          secretoAudio.volume = 0.2; // volume baixinho
+          secretoAudio.play();
+      }
+  });
+
+  document.addEventListener('keyup', (e) => {
+      if(e.key === 'Shift'){
+          secretoAtivo = false;
+          document.body.classList.remove('modo-secreto');
+          secretoAudio.pause();
+      }
+  });
+</script>
+
+
+
+<div class="secreto" style="position: absolute; top: 1500px; left: 1300px;">
+  🔮 ID1 = VERDADEIRO
+</div>
+
+<!-- Texto secreto -->
+<div class="secreto" style="position: absolute; top: 150px; left: 50px;">
+  🔮 Descobrimento...
+</div>
+
+<!-- Imagem secreta -->
+<img class="secreto" src="images/nomofobia.png" 
+     alt="Segredo" width="200"
+     style="position: absolute; top: 50px; left: 1000px;">
+
+
+          <!-- Imagem secreta -->
+<img class="secreto" src="images/reais_e_mentiras.png" 
+     alt="Segredo" width="200"
+     style="position: absolute; top: 820px; left: 820px;">
+
+
+</body>
+</html>
+
 

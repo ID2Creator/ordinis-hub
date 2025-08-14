@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monitoramento de Riquezas — Ordinis</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="style.css">
+<style>
+body {
+    background-color: #0d0d0d;
+    color: #00ff99;
+    font-family: 'VT323', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+h1 {
+    color: #00ff99;
+    text-shadow: 0 0 10px #00ff99;
+}
+.grafico-container {
+    background: rgba(0, 255, 234, 0.05);
+    border: 2px solid #00ff99;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px #00ffea33;
+    width: 90%;
+    max-width: 700px;
+    margin-top: 20px;
+}
+.connect-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    color: #00ff99;
+    border: 2px solid #00ff99;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+.connect-btn:hover {
+    background: #00ff99;
+    color: #0d0d0d;
+    box-shadow: 0 0 15px #00ff99;
+}
+</style>
+</head>
+<body>
+
+<h1>📊 Áreas com Mais Riquezas/Itens</h1>
+<div class="grafico-container">
+    <canvas id="graficoRiquezas"></canvas>
+</div>
+
+<a href="painel.html" class="connect-btn">← Voltar ao Painel</a>
+
+<script>
+const ctx = document.getElementById('graficoRiquezas');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Mina Programada', 'Sinal de Digitalização', 'Porto da Criação', 'Paraíso Digital', 'O Canto do Mundo'],
+        datasets: [{
+            label: 'Nível de Riquezas',
+            data: [67, 36, 42, 87, 98.4],
+            backgroundColor: '#00ff99',
+            borderColor: '#00f884',
+            borderWidth: 2
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            x: { ticks: { color: '#00ffea' }, grid: { color: '#00ffea22' } },
+            y: { ticks: { color: '#00ffea' }, grid: { color: '#00ffea22' } }
+        },
+        plugins: {
+            legend: { labels: { color: '#00ffea' } }
+        },
+        animation: { duration: 1500, easing: 'easeOutBounce' }
+    }
+});
+</script>
+
+</body>
+</html>
