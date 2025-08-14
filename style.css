@@ -382,4 +382,15 @@ body.modo-secreto .secreto {
     100% { opacity: 1; transform: scale(1.05); }
 }
 
+/* Adicione ao seu style.css ou dentro do <style> */
+.digit span {
+  display:inline-block;
+  font-size:2rem;
+  margin:5px 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.digit span.change {
+  transform: translateY(-10px);
+  opacity: 0;
+}
 
