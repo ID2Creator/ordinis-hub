@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Erro 203 — Ordinis</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    #qrcode {
+      position: absolute;
+      top: 150px;
+      left: 550px;
+      display: none; /* escondido até modo secreto */
+      background: white;
+      padding: 10px;
+      z-index: 1000;
+    }
+  </style>
 </head>
 <body>
 
@@ -13,36 +24,43 @@
     <p>Acesso da página negado pelo Administrador</p>
   </header>
 
-  <main style="text-align:center; margin-top:40px;">
-    <p>Segure Shift para ativar o modo secreto.</p>
+  <audio id="secreto-audio" loop>
+  <source src="audio/secreto_bg.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio.
+</audio>
 
-    <div class="secreto" style="margin-top:30px;">
-      <p>🌀 Conteúdo secreto: QR Code ou informações escondidas podem aparecer aqui!</p>
-      <img src="images/qr_novosite.png" alt="QR Code Secreto" width="250">
-    </div>
-  </main>
+<script>
+  const secretoAudio = document.getElementById('secreto-audio');
+  let secretoAtivo = false;
 
-  <script>
-    const secretoAudio = new Audio('audio/secreto_bg.mp3');
-    let secretoAtivo = false;
+  // Detecta se a tecla Shift está sendo segurada
+  document.addEventListener('keydown', (e) => {
+      if(e.key === 'Shift' && !secretoAtivo){
+          secretoAtivo = true;
+          document.body.classList.add('modo-secreto');
+          secretoAudio.volume = 0.2; // volume baixinho
+          secretoAudio.play();
+      }
+  });
 
-    document.addEventListener('keydown', (e) => {
-        if(e.key === 'Shift' && !secretoAtivo){
-            secretoAtivo = true;
-            document.body.classList.add('modo-secreto');
-            secretoAudio.volume = 0.2;
-            secretoAudio.play();
-        }
-    });
+  document.addEventListener('keyup', (e) => {
+      if(e.key === 'Shift'){
+          secretoAtivo = false;
+          document.body.classList.remove('modo-secreto');
+          secretoAudio.pause();
+      }
+  });
+</script>
 
-    document.addEventListener('keyup', (e) => {
-        if(e.key === 'Shift'){
-            secretoAtivo = false;
-            document.body.classList.remove('modo-secreto');
-            secretoAudio.pause();
-        }
-    });
-  </script>
+
+
+  <!-- Imagem secreta -->
+  <img class="secreto" src="images/desbloqueio_ordinis.png" 
+       alt="Segredo" width="200"
+       style="position: absolute; top: 50px; left: 550px;">
+
+
+
 
 </body>
 </html>

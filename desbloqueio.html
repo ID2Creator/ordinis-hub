@@ -1,37 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
   <meta charset="utf-8">
-  <title>Desbloqueio</title>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Painel Secreto ID2 — Cadeado</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { 
+      background: #1a0a2a; color: #c0c0ff; font-family: 'VT323', monospace; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; 
+    }
+    h1 { margin-bottom:40px; text-align:center; }
+    .lock-container { display:flex; gap:10px; }
+    .digit { display:flex; flex-direction:column; align-items:center; }
+    .digit button { width:40px; margin:2px; cursor:pointer; }
+    .digit span { font-size:2rem; margin:5px 0; }
+    #unlock { margin-top:20px; cursor:pointer; padding:10px 20px; background:#5a0aff; border:none; color:white; font-size:1rem; }
+    #secret-content { display:none; margin-top:30px; color:#ff99ff; text-align:center; }
+  </style>
 </head>
-<body style="text-align:center; font-family:sans-serif;">
-  <h1>Restaurando acesso...</h1>
-  <p>Você ativou o desbloqueio no PC!</p>
+<body>
+
+  <h1>Cadeado Secreto ID2</h1>
+
+  <div class="lock-container">
+    <div class="digit"><button class="up">▲</button><span>0</span><button class="down">▼</button></div>
+    <div class="digit"><button class="up">▲</button><span>0</span><button class="down">▼</button></div>
+    <div class="digit"><button class="up">▲</button><span>0</span><button class="down">▼</button></div>
+    <div class="digit"><button class="up">▲</button><span>0</span><button class="down">▼</button></div>
+    <div class="digit"><button class="up">▲</button><span>0</span><button class="down">▼</button></div>
+  </div>
+
+  <button id="unlock">Desbloquear</button>
+
+  <div id="secret-content">
+    <h2>⚠ Conteúdo Confidencial ID2 ⚠</h2>
+    <p>Aqui está o QR code ou os relatórios secretos!</p>
+    <img src="images/segredo.png" alt="QR Code" width="200">
+  </div>
 
   <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyDqEPw2B_TUtngEcvfPoJMkXbJ2AydJFy4",
-      authDomain: "ordinis-secret.firebaseapp.com",
-      databaseURL: "https://ordinis-secret-default-rtdb.firebaseio.com",
-      projectId: "ordinis-secret",
-      storageBucket: "ordinis-secret.firebasestorage.app",
-      messagingSenderId: "251949306183",
-      appId: "1:251949306183:web:c9c89244484849f7983c62",
-      measurementId: "G-1NYXRRQG7J"
-    };
+    const correctCode = [3,1,4,1,5]; // você pode definir o código que quiser
+    const digits = document.querySelectorAll('.digit span');
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
+   // Substitua os event listeners do JS por algo assim:
+document.querySelectorAll('.up').forEach((btn, i) => {
+  btn.addEventListener('click', () => {
+    const span = digits[i];
+    span.classList.add('change');          // aplica a animação
+    setTimeout(() => {
+      span.textContent = (parseInt(span.textContent)+1)%10;
+      span.classList.remove('change');     // reseta
+    }, 150); // duração do tween
+  });
+});
 
-    // Pega ID da URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get("id");
+document.querySelectorAll('.down').forEach((btn, i) => {
+  btn.addEventListener('click', () => {
+    const span = digits[i];
+    span.classList.add('change');
+    setTimeout(() => {
+      span.textContent = (parseInt(span.textContent)-1+10)%10;
+      span.classList.remove('change');
+    }, 150);
+  });
+});
 
-    if (id) {
-      db.ref("sessions/" + id).set({ unlocked: true });
-    }
+
+    document.getElementById('unlock').addEventListener('click', () => {
+      const input = Array.from(digits).map(d => parseInt(d.textContent));
+      if(JSON.stringify(input) === JSON.stringify(correctCode)){
+        document.getElementById('secret-content').style.display = 'block';
+        alert("🔓 Cadeado desbloqueado!");
+      } else {
+        alert("❌ Código incorreto, tente novamente.");
+      }
+    });
   </script>
+
 </body>
 </html>
