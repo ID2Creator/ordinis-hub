@@ -9,16 +9,52 @@
 </head>
 <body>
     <div class="menu-container perfil-container">
-        <h1 class="title">Emmet</h1>
+        <h1 class="title">Dev</h1>
         <div class="info-section">
-            <p><strong>Gênero:</strong> Masculino</p>
+            <p><strong>Gênero:</strong> Não Mencionado</p>
             <p><strong>Descrição:</strong></p>
-            <p class="descricao">Sou apenas um cara normal que quer curtir a vida nesse paraíso :]</p>
+            <p class="descricao">...Shift</p>
         </div>
 
         <a href="lista-ids.html" class="connect-btn">Voltar para Lista</a>
     </div>
 
     <div class="overlay"></div>
+
+
+  <audio id="secreto-audio" loop>
+  <source src="audio/secreto_bg.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio.
+</audio>
+
+<script>
+  const secretoAudio = document.getElementById('secreto-audio');
+  let secretoAtivo = false;
+
+  // Detecta se a tecla Shift está sendo segurada
+  document.addEventListener('keydown', (e) => {
+      if(e.key === 'Shift' && !secretoAtivo){
+          secretoAtivo = true;
+          document.body.classList.add('modo-secreto');
+          secretoAudio.volume = 0.2; // volume baixinho
+          secretoAudio.play();
+      }
+  });
+
+  document.addEventListener('keyup', (e) => {
+      if(e.key === 'Shift'){
+          secretoAtivo = false;
+          document.body.classList.remove('modo-secreto');
+          secretoAudio.pause();
+      }
+  });
+</script>
+
+    <!-- Imagem secreta -->
+<img class="secreto" src="images/codigo31415.png" 
+     alt="Segredo" width="200"
+     style="position: absolute; top: 50px; left: 1000px;">
 </body>
 </html>
+
+
