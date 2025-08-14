@@ -32,4 +32,11 @@ input.addEventListener("keydown", function(e) {
         // Rola pro final
         output.scrollTop = output.scrollHeight;
     }
+
+    
+    
 });
+
+
+
+
