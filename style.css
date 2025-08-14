@@ -315,3 +315,71 @@ body.guia-page {
     line-height: 1.5;
     white-space: pre-line; /* mantém quebras de linha */
 }
+
+
+.video-section {
+  margin-top: 30px;
+  text-align: center;
+  color: #fff;
+}
+
+.video-section video {
+  width: 80%;
+  max-width: 900px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Modo Secreto */
+body.modo-secreto {
+    background-color: #1a0033 !important;
+    color: #ff66ff !important;
+    transition: background 0.5s, color 0.5s;
+}
+
+body.modo-secreto .title,
+body.modo-secreto .subtitle,
+body.modo-secreto .connect-btn,
+body.modo-secreto h2,
+body.modo-secreto h3,
+body.modo-secreto p,
+body.modo-secreto li {
+    color: #ff66ff !important;
+}
+
+body.modo-secreto .overlay {
+    background: repeating-linear-gradient(
+        rgba(255,102,255,0.05),
+        rgba(255,102,255,0.05) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    animation: noiseMove 2s linear infinite;
+}
+
+/* Conteúdo secreto que só aparece no modo secreto */
+.secreto {
+    display: none;
+    color: #ff99ff;
+    font-size: 1.15rem;
+    text-align: center;
+    margin-top: 15px;
+}
+
+body.modo-secreto .secreto {
+    display: block;
+    animation: pulsar 1.5s infinite alternate;
+}
+
+.secret {
+    display: none;
+    filter: hue-rotate(270deg) brightness(2); /* efeito roxo */
+}
+
+
+@keyframes pulsar {
+    0% { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.05); }
+}
+
+
