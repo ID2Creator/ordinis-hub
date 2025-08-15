@@ -66,15 +66,16 @@ document.querySelectorAll('.down').forEach((btn, i) => {
 });
 
 
-    document.getElementById('unlock').addEventListener('click', () => {
-      const input = Array.from(digits).map(d => parseInt(d.textContent));
-      if(JSON.stringify(input) === JSON.stringify(correctCode)){
-        document.getElementById('secret-content').style.display = 'block';
-        alert("🔓 Cadeado desbloqueado!");
-      } else {
-        alert("❌ Código incorreto, tente novamente.");
-      }
-    });
+   document.getElementById('unlock').addEventListener('click', () => {
+  const input = Array.from(digits).map(d => parseInt(d.textContent));
+  if(JSON.stringify(input) === JSON.stringify(correctCode)){
+    // Redireciona para a página desejada
+    window.location.href = "painelsecreto.html"; // substitua pelo link real
+  } else {
+    alert("❌ Código incorreto, tente novamente.");
+  }
+});
+
   </script>
 
 </body>
