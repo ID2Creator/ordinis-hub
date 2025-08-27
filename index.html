@@ -1,14 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>ARG Misterioso</title>
-  <style>
-    body, html { margin: 0; overflow: hidden; width: 100%; height: 100%; }
-    canvas { display: block; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordinis Link</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
-  <script type="module" src="./main.js"></script>
+    <div class="menu-container">
+        <h1 class="title glitch" data-text="ORDINIS LINK">ORDINIS LINK</h1>
+        <p class="subtitle">Canal de comunicação entre mundos: <span class="status">ESTÁVEL</span></p>
+        <p class="subtitle">Autenticando conexão com a Dimensão Ordinis...</p>
+       <a href="painel.html" class="connect-btn">Estabelecer Conexão</a>
+
+    </div>
+    
+
+    <!-- seu código HTML existente -->
+
+    <div class="overlay"></div>
+
+    <script>
+        // Cria o objeto de áudio
+        const beep = new Audio("beep.mp3");
+        beep.volume = 2; // volume baixo para não incomodar
+
+        // Seleciona todos os botões com a classe connect-btn
+        const buttons = document.querySelectorAll(".connect-btn");
+
+        // Adiciona o som ao clicar em qualquer botão
+        buttons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                beep.currentTime = 0; // reinicia o som para tocar do início
+                beep.play();
+            });
+        });
+        
+    </script>
+
+
+    
+
+
 </body>
 </html>
